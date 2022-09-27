@@ -17,7 +17,7 @@ jobs:
         with:
           registry: https://ghcr.io
           username: rolandkappeler
-          password: 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
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build and push
