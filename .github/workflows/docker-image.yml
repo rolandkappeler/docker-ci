@@ -32,5 +32,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/hello-world:${{ github.run_number }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}/hello-world:${{github.ref_name}}-${{ github.run_number }}
           labels: main
