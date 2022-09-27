@@ -8,7 +8,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
   # IMAGE_NAME: simulator
 
 jobs:
@@ -32,8 +31,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/simulator
-          tags: type=sha
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/capture-device-simulator:latest
+          # tags: type=sha
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
@@ -41,7 +40,8 @@ jobs:
           file: ./Dockerfile
           push: true
           # tags: rolandkappeler/hello:latest
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}/capture-device-simulator:latest
+          # labels: ${{ steps.meta.outputs.labels }}
     #- name: Build the Docker image
     # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
