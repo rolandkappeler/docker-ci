@@ -1,4 +1,4 @@
 FROM alpine
-COPY scripts scripts
-RUN bin/sh "scripts/load.sh"
+COPY scripts work
+RUN bin/sh "work/load.sh"
 CMD ["echo", "Hello World!"]
